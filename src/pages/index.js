@@ -2,6 +2,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import { createMuiTheme, createStyles, makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,7 +15,11 @@ const useStyles = makeStyles(() =>
   createStyles({
     toolbar: {
       justifyContent: "flex-end",
-    }
+    },
+    heroContainer: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
   })
 );
 
@@ -51,14 +56,25 @@ const IndexPage = () => {
         </Toolbar>
       </AppBar>
       <Container maxWidth="sm">
-        <Box my={4}>
+        <Box my={12}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
             Yuya Sumie
           </Typography>
           <Typography color="textPrimary" variant="h5" component="h1" gutterBottom>
             - Portfolio Site -
           </Typography>
-          <StaticImage src="../images/hero.png" alt="Snow landscape"/>
+        </Box>
+      </Container>
+      <Container maxWidth="sm" className={classes.heroContainer}>
+        <StaticImage src="../images/hero.webp" alt="Snow landscape" />
+      </Container>
+      <Container>
+        <Box mt={9}>
+          <Grid container justify="center">
+            <Grid item>
+              <StaticImage src="../images/expandMore.png" alt="Expand more" />
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </ThemeProvider>
