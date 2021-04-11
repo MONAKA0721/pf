@@ -66,13 +66,13 @@ const IndexPage = () => {
         </Box>
       </Container>
       <Container maxWidth="sm" className={classes.heroContainer}>
-        <StaticImage src="../images/hero.webp" alt="Snow landscape" />
+        <StaticImage src="../images/hero-min.png" alt="Snow landscape" />
       </Container>
       <Container>
         <Box mt={9}>
           <Grid container justify="center">
             <Grid item>
-              <StaticImage src="../images/expandMore.png" alt="Expand more" />
+              <StaticImage src="../images/expandMore-min.png" alt="Expand more" />
             </Grid>
           </Grid>
         </Box>
