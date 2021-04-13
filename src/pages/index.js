@@ -8,6 +8,8 @@ import { createMuiTheme, createStyles, makeStyles, ThemeProvider } from "@materi
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
+import "fontsource-noto-sans-jp";
+import "fontsource-noto-sans-jp/500.css";
 import { StaticImage } from "gatsby-plugin-image";
 import * as React from 'react';
 
@@ -19,6 +21,20 @@ const useStyles = makeStyles(() =>
     heroContainer: {
       paddingLeft: 0,
       paddingRight: 0,
+    },
+    name: {
+      fontFamily: [
+        'Noto Sans JP',
+        '"Tahoma"',
+        'serif',
+      ].join(','),
+    },
+    profile: {
+      marginTop: 15,
+      fontFamily: [
+        'Noto Sans JP',
+        'serif',
+      ].join(','),
     },
   })
 );
@@ -35,6 +51,7 @@ const IndexPage = () => {
       },
       text: {
         primary: "#FFFFFF",
+        secondary: "#A9A9A9",
       },
     },
     typography: {
@@ -55,6 +72,7 @@ const IndexPage = () => {
           </IconButton>
         </Toolbar>
       </AppBar>
+      
       <Container maxWidth="sm">
         <Box my={12}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
@@ -73,7 +91,7 @@ const IndexPage = () => {
         />
       </Container>
       <Container>
-        <Box mt={9}>
+        <Box my={9}>
           <Grid container justify="center">
             <Grid item>
               <StaticImage
@@ -83,6 +101,45 @@ const IndexPage = () => {
               />
             </Grid>
           </Grid>
+        </Box>
+      </Container>
+
+      <Container maxWidth="sm">
+        <Box mt={20}>
+          <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
+            ABOUT
+          </Typography>
+        </Box>
+      </Container>
+      <Container maxWidth="sm" className={classes.heroContainer}>
+        <StaticImage
+          src="../images/profile.png"
+          alt="Profile"
+          formats={["png"]}
+        />
+      </Container>
+      <Container maxWidth="sm">
+        <Box my={5}>
+          <Typography color="textPrimary" variant="h6" component="h1" className={classes.name} gutterBottom>
+            モナカ | Yuya Sumie
+          </Typography>
+        </Box>
+        <Box my={5}>
+          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
+            1997/7/21 生まれ。奈良県出身。
+          </Typography>
+          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
+            京都大学大学院情報学研究科知能情報学専攻。
+          </Typography>
+          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
+            Golang, Ruby, Python などでバックエンドの開発を主に行っていますが、趣味のチーム開発ではフロントを書くこともしばしばあります。
+          </Typography>
+          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
+            パフォーマンス・チューニングが好きで社会人になってからもその領域で活躍したいと思っています。
+          </Typography>
+          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
+            趣味は旅行とスノボとスマブラ。
+          </Typography>
         </Box>
       </Container>
     </ThemeProvider>
