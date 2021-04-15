@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
+import Link from '@material-ui/core/Link';
 import { createMuiTheme, createStyles, makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -13,7 +14,7 @@ import "fontsource-noto-sans-jp/500.css";
 import { StaticImage } from "gatsby-plugin-image";
 import * as React from 'react';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     toolbar: {
       justifyContent: "flex-end",
@@ -35,6 +36,24 @@ const useStyles = makeStyles(() =>
         'Noto Sans JP',
         'serif',
       ].join(','),
+    },
+    link: {
+      fontFamily: [
+        '"Arial"',
+        'serif',
+      ].join(','),
+      '& > * + *': {
+        marginLeft: theme.spacing(4),
+      },
+      marginBottom: theme.spacing(3),
+      fontSize: 24,
+    },
+    bambooooLink: {
+      fontFamily: [
+        '"Arial"',
+        'serif',
+      ].join(','),
+      fontSize: 24,
     },
   })
 );
@@ -140,6 +159,93 @@ const IndexPage = () => {
           <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
             趣味は旅行とスノボとスマブラ。
           </Typography>
+        </Box>
+      </Container>
+
+      <Container maxWidth="sm">
+        <Box mt={20}>
+          <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
+            LINKS
+          </Typography>
+        </Box>
+        <Box mt={5}>
+          <Grid container className={classes.link} alignItems="center">
+            <Grid item>
+              <StaticImage
+                src="../images/github.png"
+                alt="GitHub logo"
+                width={70}
+                formats={["png"]}
+              />
+            </Grid>
+            <Grid item>
+              <Link href="https://github.com/MONAKA0721" target="_blank" rel="noopener" color="textPrimary" underline="always">
+                @MONAKA0721
+              </Link>
+            </Grid>
+          </Grid>
+          <Grid container className={classes.link} alignItems="center">
+            <Grid item>
+              <StaticImage
+                src="../images/twitter.png"
+                alt="Twitter logo"
+                width={70}
+                formats={["png"]}
+              />
+            </Grid>
+            <Grid item>
+              <Link href="https://mobile.twitter.com/monaka_0721" target="_blank" rel="noopener" color="textPrimary" underline="always">
+                @monaka_0721
+              </Link>
+            </Grid>
+          </Grid>
+          <Grid container className={classes.link} alignItems="center">
+            <Grid item>
+              <StaticImage
+                src="../images/instagram.png"
+                alt="Instagram logo"
+                width={70}
+                formats={["png"]}
+              />
+            </Grid>
+            <Grid item>
+              <Link href="https://www.instagram.com/yuyasumie/" target="_blank" rel="noopener" color="textPrimary" underline="always">
+                @yuyasumie
+              </Link>
+            </Grid>
+          </Grid>
+          <Grid container className={classes.link} alignItems="center">
+            <Grid item>
+              <StaticImage
+                src="../images/wantedly.png"
+                alt="Wantedly logo"
+                width={70}
+                formats={["png"]}
+              />
+            </Grid>
+            <Grid item>
+              <Link href="https://www.wantedly.com/id/monaka0721" target="_blank" rel="noopener" color="textPrimary" underline="always">
+                @monaka0721
+              </Link>
+            </Grid>
+          </Grid>
+        </Box>
+        <Box my={10}>
+          <Grid container className={classes.bambooooLink} direction="column" alignItems="center">
+            <Grid item>
+              <StaticImage
+                src="../images/bamboooo.png"
+                alt="bamboooo logo"
+                width={100}
+                formats={["png"]}
+              />
+            </Grid>
+            <Grid item>
+              <Link href="https://bamboooo.net" target="_blank" rel="noopener" color="textPrimary" underline="always">
+                https://bamboooo.net
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </ThemeProvider>
