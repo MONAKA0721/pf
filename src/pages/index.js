@@ -14,6 +14,7 @@ import "fontsource-noto-sans-jp/500.css";
 import { StaticImage } from "gatsby-plugin-image";
 import * as React from 'react';
 import Career from "../components/career";
+import Posts from "../components/posts";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -89,6 +90,11 @@ const IndexPage = () => {
           '&:before': {
             flex: 0,
           },
+        },
+      },
+      MuiCard: {
+        root: {
+          backgroundColor: "#3E3E3E",
         },
       },
     },
@@ -266,6 +272,9 @@ const IndexPage = () => {
       </Container>
     
       <Career />
+
+      <Posts />
+      
     </ThemeProvider>
   )
 }
