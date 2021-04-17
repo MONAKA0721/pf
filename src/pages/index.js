@@ -13,6 +13,7 @@ import "fontsource-noto-sans-jp";
 import "fontsource-noto-sans-jp/500.css";
 import { StaticImage } from "gatsby-plugin-image";
 import * as React from 'react';
+import Career from "../components/career";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -65,6 +66,9 @@ const IndexPage = () => {
       primary: {
         main: "#191919",
       },
+      secondary: {
+        main: "#A38F48",
+      },
       background: {
         default: "#212121",
       },
@@ -78,6 +82,15 @@ const IndexPage = () => {
         '"Times"',
         'serif',
       ].join(','),
+    },
+    overrides: {
+      MuiTimelineItem: {
+        missingOppositeContent: {
+          '&:before': {
+            flex: 0,
+          },
+        },
+      },
     },
   });
   
@@ -158,6 +171,9 @@ const IndexPage = () => {
           </Typography>
           <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
             趣味は旅行とスノボとスマブラ。
+          </Typography>
+          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
+            NiziU の推しは RIO。
           </Typography>
         </Box>
       </Container>
@@ -248,6 +264,8 @@ const IndexPage = () => {
           </Grid>
         </Box>
       </Container>
+    
+      <Career />
     </ThemeProvider>
   )
 }
