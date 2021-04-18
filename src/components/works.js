@@ -47,8 +47,8 @@ const works = [
     url: 'https://apps.apple.com/jp/app/%E3%83%AF%E3%82%A4%E3%83%AF%E3%82%A4/id1561027910',
     title: `ワイワイ`,
     src: waiwai,
-    description: `あなたの価値観でみんながワイワイ
-    おしゃべりしながらオンライン対戦できる心理ゲームで、Among Us の次に流行ると巷で噂されてます。
+    catchcopy: 'あなたの価値観でみんながワイワイ',
+    description: `おしゃべりしながらオンライン対戦できる心理ゲームで、Among Us の次に流行ると巷で噂されてます。
     自分の性格、センス、価値観が問われるので仲間内はもちろん、
     初対面の人の事も手っ取り早く知ることが出来ます。
     `,
@@ -58,8 +58,8 @@ const works = [
     url: 'https://www.memopic.net',
     title: 'memopic',
     src: memopic,
-    description: `旅の思い出をプレイリストで振り返ろう
-      旅行中ドライブで聴いてた曲
+    catchcopy: '旅の思い出をプレイリストで振り返ろう',
+    description: `旅行中ドライブで聴いてた曲
       あの時流行っていた、好きだった曲から
       思い出を振り返ってみませんか？
       『memopic』はプレイリストで旅を記録する
@@ -71,8 +71,8 @@ const works = [
     url: 'https://memorip.net',
     title: 'Memorip',
     src: memorip,
-    description: `旅行プラン作成・共有サイト
-    直感的にプランを作成したり
+    catchcopy: '旅行プラン作成・共有サイト',
+    description: `直感的にプランを作成したり
     簡単にプランを共有したりすることができます
     これからの旅行のしおりとして、また
     他の人のプランを参考にして作成できます
@@ -83,8 +83,8 @@ const works = [
     url: 'https://github.com/MONAKA0721/Airlight-Integral-HAZE',
     title: 'Near Light Soruce HAZE Dataset',
     src: haze,
-    description: `散乱画像データセット
-    散乱除去の研究で使用しているデータセット作成のためのソースコードを公開しています
+    catchcopy: '散乱画像データセット',
+    description: `散乱除去の研究で使用しているデータセット作成のためのソースコードを公開しています
     近接光源下での散乱をシミュレーションして撮影されます
     `,
     tags: '#Blender #Python #SceneNetRGB-D'
@@ -93,8 +93,8 @@ const works = [
     url: 'https://main.dg6tzh1klqjl4.amplifyapp.com',
     title: 'PF',
     src: pf,
-    description: `ポートフォリオサイト
-    このサイトです
+    catchcopy: 'ポートフォリオサイト',
+    description: `このサイトです
     以前のポートフォリオを刷新しました
     `,
     tags: '#Gatsby #Material-UI #Amplify'
@@ -136,8 +136,13 @@ const Works = () => {
                         {work.title}
                       </Box>
                     </Typography>
-                    <Typography variant="body1" color="textSecondary" gutterBottom>
-                      <Box className={classes.description} my={2}>
+                    <Typography variant="subtitle" color="textSecondary" gutterBottom>
+                      <Box className={classes.title}>
+                        {work.catchcopy}
+                      </Box>
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                      <Box className={classes.description} lineHeight={1.7} my={2}>
                         {work.description}
                       </Box>
                     </Typography>
