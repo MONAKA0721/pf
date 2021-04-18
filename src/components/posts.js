@@ -83,7 +83,7 @@ const Posts = () => {
       <Container maxWidth="md">
         <Grid container spacing={3}>
           {posts.map((post) => (
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6}>
               <CardActionArea component="a" href={post.url} target="_blank">
                 <Card className={classes.card}>
                   <CardMedia className={classes.cardMedia}>
