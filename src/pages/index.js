@@ -15,6 +15,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import * as React from 'react';
 import Career from "../components/career";
 import Posts from "../components/posts";
+import Works from "../components/works";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -271,8 +272,10 @@ const IndexPage = () => {
         </Box>
       </Container>
     
-      <Career />
+      <Works />
 
+      <Career />
+ 
       <Posts />
       
     </ThemeProvider>
