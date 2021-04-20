@@ -19,6 +19,7 @@ import "fontsource-noto-sans-jp/500.css";
 import { StaticImage } from "gatsby-plugin-image";
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import * as React from 'react';
+import { Helmet } from "react-helmet";
 import Career from "../components/career";
 import Posts from "../components/posts";
 import Works from "../components/works";
@@ -134,6 +135,15 @@ const IndexPage = () => {
   
   return (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <html lang="ja" />
+        <meta charset="utf-8" />
+        <title>Yuya Sumie Portfolio</title>
+        <meta name="description" content="Yuya Sumie's portfolio site." />
+        <meta property="og:title" content="Yuya Sumie Portfolio"/>
+        <meta property="og:description" content="Yuya Sumie's portfolio site."/>
+        <meta property="og:image" content="Yuya Sumie's portfolio site."/>
+      </Helmet>
       <CssBaseline />
       <AppBar position="sticky">
         <Toolbar className={classes.toolbar}>
