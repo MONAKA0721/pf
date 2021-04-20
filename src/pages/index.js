@@ -17,6 +17,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import "fontsource-noto-sans-jp";
 import "fontsource-noto-sans-jp/500.css";
 import { StaticImage } from "gatsby-plugin-image";
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import * as React from 'react';
 import Career from "../components/career";
 import Posts from "../components/posts";
@@ -134,7 +135,7 @@ const IndexPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="fixed">
+      <AppBar position="sticky">
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -165,7 +166,7 @@ const IndexPage = () => {
           
           <List>
             {['TOP', 'ABOUT', 'LINKS', 'WORKS', 'CAREER', 'POSTS'].map((text) => (
-              <ListItem button key={text} className={classes.listItem}>
+              <ListItem button key={text} className={classes.listItem} onClick={() => scrollTo('#'+text)}>
                 <ListItemText primary={text} className={classes.listItemText} />
               </ListItem>
             ))}
@@ -173,8 +174,11 @@ const IndexPage = () => {
         </div>
       </Drawer>
 
-      <Container maxWidth="sm">
-        <Box my={12}>
+      <Container maxWidth="sm" id="TOP">
+        <Box id="TOP" mb={12}>
+          &ensp; 
+        </Box>
+        <Box mb={12}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
             Yuya Sumie
           </Typography>
@@ -205,7 +209,10 @@ const IndexPage = () => {
       </Container>
 
       <Container maxWidth="sm">
-        <Box mt={20}>
+        <Box id="ABOUT" mt={14}>
+          &ensp; 
+        </Box>
+        <Box mt={6}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
             ABOUT
           </Typography>
@@ -247,7 +254,10 @@ const IndexPage = () => {
       </Container>
 
       <Container maxWidth="sm">
-        <Box mt={20}>
+        <Box id="LINKS" mt={14}>
+          &ensp; 
+        </Box>
+        <Box mt={6}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
             LINKS
           </Typography>

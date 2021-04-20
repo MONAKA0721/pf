@@ -74,7 +74,10 @@ const Posts = () => {
   return (
     <>
       <Container maxWidth="sm">
-        <Box mt={15}>
+        <Box id="POSTS" mt={14}>
+          &ensp; 
+        </Box>
+        <Box mt={6}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
             POSTS
           </Typography>

@@ -11,5 +11,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-material-ui`,
+    `gatsby-plugin-smoothscroll`,
   ],
 };

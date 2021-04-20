@@ -106,7 +106,10 @@ const Career = () => {
   
   return (
     <Container maxWidth="sm">
-      <Box mt={20}>
+        <Box id="CAREER" mt={14}>
+          &ensp; 
+        </Box>
+        <Box mt={6}>
         <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
           CAREER
         </Typography>
