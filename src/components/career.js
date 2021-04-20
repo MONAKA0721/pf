@@ -113,7 +113,7 @@ const Career = () => {
       </Box>
       <Timeline>
         {careers.map((career) => (
-          <TimelineItem>
+          <TimelineItem key={career.description}>
             <TimelineSeparator>
               <TimelineDot color="secondary" />
               <TimelineConnector />

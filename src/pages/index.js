@@ -2,12 +2,17 @@ import AppBar from "@material-ui/core/AppBar";
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import { createMuiTheme, createStyles, makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 import "fontsource-noto-sans-jp";
 import "fontsource-noto-sans-jp/500.css";
@@ -21,6 +26,10 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     toolbar: {
       justifyContent: "flex-end",
+    },
+    drawerToolbar: {
+      justifyContent: "flex-end",
+      backgroundColor: '#000',
     },
     heroContainer: {
       paddingLeft: 0,
@@ -57,6 +66,16 @@ const useStyles = makeStyles((theme) =>
         'serif',
       ].join(','),
       fontSize: 24,
+    },
+    list: {
+      width: 'auto',
+      backgroundColor: '#000',
+    },
+    iconButton: {
+      color: '#FFF',
+    },
+    listItem: {
+      textAlign: 'center',
     },
   })
 );
@@ -98,20 +117,62 @@ const IndexPage = () => {
           backgroundColor: "#3E3E3E",
         },
       },
+      MuiListItemText: {
+        primary: {
+          fontSize: '2rem',
+        }
+      }
     },
   });
+
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (open) => (event) => {
+    setOpen(open);
+  };
   
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar className={classes.toolbar}>
-          <IconButton edge="start" color="inherit" aria-label="menu">
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleDrawer(true)}
+          >
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
       
+      <Drawer anchor='top' open={open} onClose={toggleDrawer(false)}>
+        <Toolbar className={classes.drawerToolbar}>
+          <IconButton
+            onClick={toggleDrawer(false)}
+            className={classes.iconButton}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Toolbar>
+        <div
+          className={classes.list}
+          role="presentation"
+          onKeyDown={toggleDrawer(false)}
+          onClick={toggleDrawer(false)}
+        >
+          
+          <List>
+            {['TOP', 'ABOUT', 'LINKS', 'WORKS', 'CAREER', 'POSTS'].map((text) => (
+              <ListItem button key={text} className={classes.listItem}>
+                <ListItemText primary={text} className={classes.listItemText} />
+              </ListItem>
+            ))}
+          </List>
+        </div>
+      </Drawer>
+
       <Container maxWidth="sm">
         <Box my={12}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
