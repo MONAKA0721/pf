@@ -140,9 +140,16 @@ const IndexPage = () => {
         <meta charset="utf-8" />
         <title>Yuya Sumie Portfolio</title>
         <meta name="description" content="Yuya Sumie's portfolio site." />
+        
+        <meta property="og:image" content="/ogp.png"/>
+        <meta property="og:url" content="https://mo7ka.com"/>
+        <meta property="og:type" content="website"/>
         <meta property="og:title" content="Yuya Sumie Portfolio"/>
+        <meta property="og:site_name" content="Yuya Sumie Portfolio"/>
         <meta property="og:description" content="Yuya Sumie's portfolio site."/>
-        <meta property="og:image" content="Yuya Sumie's portfolio site."/>
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@monaka_0721" />
       </Helmet>
       <CssBaseline />
       <AppBar position="sticky">
