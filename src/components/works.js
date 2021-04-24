@@ -40,8 +40,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-console.log(waiwai);
-
 const works = [
   {
     url: 'https://apps.apple.com/jp/app/%E3%83%AF%E3%82%A4%E3%83%AF%E3%82%A4/id1561027910',
@@ -107,7 +105,10 @@ const Works = () => {
   return (
     <>
       <Container maxWidth="sm">
-        <Box mt={15}>
+        <Box id="WORKS" mt={14}>
+          &ensp; 
+        </Box>
+        <Box mt={6}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
             WORKS
           </Typography>
@@ -116,7 +117,7 @@ const Works = () => {
       <Container maxWidth="md">
         <Grid container spacing={3}>
           {works.map((work) => (
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} key={work.title}>
               <CardActionArea component="a" href={work.url} target="_blank">
                 <Card className={classes.card}>
                   <CardMedia className={classes.cardMedia}>   
@@ -136,12 +137,12 @@ const Works = () => {
                         {work.title}
                       </Box>
                     </Typography>
-                    <Typography variant="subtitle" color="textSecondary" gutterBottom>
+                    <Typography variant="subtitle1" color="textSecondary" gutterBottom>
                       <Box className={classes.title}>
                         {work.catchcopy}
                       </Box>
                     </Typography>
-                    <Typography variant="body1" gutterBottom>
+                    <Typography component="span" variant="body1" gutterBottom>
                       <Box className={classes.description} lineHeight={1.7} my={2}>
                         {work.description}
                       </Box>

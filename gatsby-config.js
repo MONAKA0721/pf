@@ -11,5 +11,13 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-material-ui`,
+    `gatsby-plugin-smoothscroll`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        icon: `src/images/monaka.png`,
+      },
+    },
+    `gatsby-plugin-react-helmet`,
   ],
 };

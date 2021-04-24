@@ -74,7 +74,10 @@ const Posts = () => {
   return (
     <>
       <Container maxWidth="sm">
-        <Box mt={15}>
+        <Box id="POSTS" mt={14}>
+          &ensp; 
+        </Box>
+        <Box mt={6}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
             POSTS
           </Typography>
@@ -83,7 +86,7 @@ const Posts = () => {
       <Container maxWidth="md">
         <Grid container spacing={3}>
           {posts.map((post) => (
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} key={post.url}>
               <CardActionArea component="a" href={post.url} target="_blank">
                 <Card className={classes.card}>
                   <CardMedia className={classes.cardMedia}>

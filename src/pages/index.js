@@ -2,17 +2,24 @@ import AppBar from "@material-ui/core/AppBar";
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import { createMuiTheme, createStyles, makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 import "fontsource-noto-sans-jp";
 import "fontsource-noto-sans-jp/500.css";
 import { StaticImage } from "gatsby-plugin-image";
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import * as React from 'react';
+import { Helmet } from "react-helmet";
 import Career from "../components/career";
 import Posts from "../components/posts";
 import Works from "../components/works";
@@ -21,6 +28,10 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     toolbar: {
       justifyContent: "flex-end",
+    },
+    drawerToolbar: {
+      justifyContent: "flex-end",
+      backgroundColor: '#000',
     },
     heroContainer: {
       paddingLeft: 0,
@@ -57,6 +68,16 @@ const useStyles = makeStyles((theme) =>
         'serif',
       ].join(','),
       fontSize: 24,
+    },
+    list: {
+      width: 'auto',
+      backgroundColor: '#000',
+    },
+    iconButton: {
+      color: '#FFF',
+    },
+    listItem: {
+      textAlign: 'center',
     },
   })
 );
@@ -98,22 +119,83 @@ const IndexPage = () => {
           backgroundColor: "#3E3E3E",
         },
       },
+      MuiListItemText: {
+        primary: {
+          fontSize: '2rem',
+        }
+      }
     },
   });
+
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (open) => (event) => {
+    setOpen(open);
+  };
   
   return (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <html lang="ja" />
+        <meta charset="utf-8" />
+        <title>Yuya Sumie Portfolio</title>
+        <meta name="description" content="Yuya Sumie's portfolio site." />
+        
+        <meta property="og:image" content="/ogp.png"/>
+        <meta property="og:url" content="https://mo7ka.com"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Yuya Sumie Portfolio"/>
+        <meta property="og:site_name" content="Yuya Sumie Portfolio"/>
+        <meta property="og:description" content="Yuya Sumie's portfolio site."/>
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@monaka_0721" />
+      </Helmet>
       <CssBaseline />
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Toolbar className={classes.toolbar}>
-          <IconButton edge="start" color="inherit" aria-label="menu">
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleDrawer(true)}
+          >
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
       
-      <Container maxWidth="sm">
-        <Box my={12}>
+      <Drawer anchor='top' open={open} onClose={toggleDrawer(false)}>
+        <Toolbar className={classes.drawerToolbar}>
+          <IconButton
+            onClick={toggleDrawer(false)}
+            className={classes.iconButton}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Toolbar>
+        <div
+          className={classes.list}
+          role="presentation"
+          onKeyDown={toggleDrawer(false)}
+          onClick={toggleDrawer(false)}
+        >
+          
+          <List>
+            {['TOP', 'ABOUT', 'LINKS', 'WORKS', 'CAREER', 'POSTS'].map((text) => (
+              <ListItem button key={text} className={classes.listItem} onClick={() => scrollTo('#'+text)}>
+                <ListItemText primary={text} className={classes.listItemText} />
+              </ListItem>
+            ))}
+          </List>
+        </div>
+      </Drawer>
+
+      <Container maxWidth="sm" id="TOP">
+        <Box id="TOP" mb={12}>
+          &ensp; 
+        </Box>
+        <Box mb={12}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
             Yuya Sumie
           </Typography>
@@ -144,7 +226,10 @@ const IndexPage = () => {
       </Container>
 
       <Container maxWidth="sm">
-        <Box mt={20}>
+        <Box id="ABOUT" mt={14}>
+          &ensp; 
+        </Box>
+        <Box mt={6}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
             ABOUT
           </Typography>
@@ -186,7 +271,10 @@ const IndexPage = () => {
       </Container>
 
       <Container maxWidth="sm">
-        <Box mt={20}>
+        <Box id="LINKS" mt={14}>
+          &ensp; 
+        </Box>
+        <Box mt={6}>
           <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
             LINKS
           </Typography>
