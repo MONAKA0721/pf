@@ -17,7 +17,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import "fontsource-noto-sans-jp";
 import "fontsource-noto-sans-jp/500.css";
 import { StaticImage } from "gatsby-plugin-image";
-import scrollTo from 'gatsby-plugin-smoothscroll';
 import * as React from 'react';
 import { Helmet } from "react-helmet";
 import Career from "../components/career";
@@ -78,6 +77,11 @@ const useStyles = makeStyles((theme) =>
     },
     listItem: {
       textAlign: 'center',
+      display: 'inline-block',
+    },
+    sectionLink: {
+      textDecoration: 'none',
+      color: 'inherit',
     },
   })
 );
@@ -183,8 +187,10 @@ const IndexPage = () => {
           
           <List>
             {['TOP', 'ABOUT', 'LINKS', 'WORKS', 'CAREER', 'POSTS'].map((text) => (
-              <ListItem button key={text} className={classes.listItem} onClick={() => scrollTo('#'+text)}>
-                <ListItemText primary={text} className={classes.listItemText} />
+              <ListItem button key={text} className={classes.listItem}>
+                <a href={"#"+text} className={classes.sectionLink}>
+                  <ListItemText primary={text} />
+                </a>
               </ListItem>
             ))}
           </List>
