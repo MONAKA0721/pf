@@ -5,8 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
@@ -70,6 +71,8 @@ const posts = [
 
 const Posts = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   
   return (
     <>
@@ -93,7 +96,7 @@ const Posts = () => {
                     <img
                       src={post.src}
                       alt={post.title + "Image"}
-                      height="234"
+                      height={matches? '234' : ''}
                       style={{
                         verticalAlign: 'middle',
                         maxWidth: '100%',

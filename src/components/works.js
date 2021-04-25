@@ -5,8 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
 import haze from '../images/haze.png';
 import memopic from '../images/memopic.png';
@@ -101,6 +102,8 @@ const works = [
 
 const Works = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'))
 
   return (
     <>
@@ -124,10 +127,11 @@ const Works = () => {
                     <img
                       src={work.src}
                       alt={work.title + "Image"}
-                      height="280"
+                      height={matches? '280' : ''}
                       style={{
                         verticalAlign: 'middle',
                         maxWidth: '100%',
+                        objectFit: 'cover',
                       }}
                     />
                   </CardMedia>
