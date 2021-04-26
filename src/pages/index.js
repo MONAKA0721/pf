@@ -145,7 +145,7 @@ const IndexPage = () => {
         <title>Yuya Sumie Portfolio</title>
         <meta name="description" content="Yuya Sumie's portfolio site." />
         
-        <meta property="og:image" content="/ogp.png"/>
+        <meta property="og:image" content="https://mo7ka.com/ogp.png"/>
         <meta property="og:url" content="https://mo7ka.com"/>
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="Yuya Sumie Portfolio"/>
