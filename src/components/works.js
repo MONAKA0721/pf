@@ -14,6 +14,7 @@ import memopic from '../images/memopic.png';
 import memorip from '../images/memorip.png';
 import pf from '../images/pf.png';
 import waiwai from '../images/waiwai.png';
+import yowin from '../images/yowin.png';
 
 const useStyles = makeStyles((theme) => ({
   cardMedia: {
@@ -42,6 +43,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const works = [
+  {
+    url: 'https://yowin.gg',
+    title: `yowin`,
+    src: yowin,
+    catchcopy: '1タップで、あなたにぴったりと仲間とゲームしよう。',
+    description: `Yowinは、AIがあなたのゲームスタイルを分析し、
+    最適な仲間を見つけて、つなぐ、マッチングプラットフォームです。
+    仲間を見つけるための募集投稿や連絡は不要。
+    自動でマッチングしたら、すぐにゲームを開始できます
+    `,
+    tags: '#Golang #FlexMatch #Discord #ECS'
+  },
   {
     url: 'https://apps.apple.com/jp/app/%E3%83%AF%E3%82%A4%E3%83%AF%E3%82%A4/id1561027910',
     title: `ワイワイ`,
@@ -75,6 +88,7 @@ const works = [
     簡単にプランを共有したりすることができます
     これからの旅行のしおりとして、また
     他の人のプランを参考にして作成できます
+    
     `,
     tags: '#Rails'
   },
@@ -95,6 +109,8 @@ const works = [
     catchcopy: 'ポートフォリオサイト',
     description: `このサイトです
     以前のポートフォリオを刷新しました
+    
+    
     `,
     tags: '#Gatsby #Material-UI #Amplify'
   },
