@@ -1,24 +1,24 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  <a href="https://mo7ka.com">
+    <img alt="ogp" src="https://mo7ka.com/ogp.png" width="600" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby minimal starter
+  monaka's portfolio site
 </h1>
 
-## 🚀 Quick start
+<div  align="center">
+  <a href="https://mo7ka.com">https://mo7ka.com</a>
+</div>
 
-1.  **Create a Gatsby site.**
+## requirements
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+- Node.js 14.17.3
+- npm 6.14.13
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+## commands
 
-2.  **Start developing.**
+1.  **Start developing.**
 
     Navigate into your new site’s directory and start it up.
 
@@ -27,13 +27,11 @@
     npm run develop
     ```
 
-3.  **Open the code and start customizing!**
+2.  **Open the code and start customizing!**
 
     Your site is now running at http://localhost:8000!
 
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
+3.  **Learn more**
 
     - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
 
