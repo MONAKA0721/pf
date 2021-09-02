@@ -13,6 +13,7 @@ import haze from '../images/haze.png';
 import memopic from '../images/memopic.png';
 import memorip from '../images/memorip.png';
 import pf from '../images/pf.png';
+import pukapuka from '../images/pukapuka.png';
 import waiwai from '../images/waiwai.png';
 import yowin from '../images/yowin.png';
 
@@ -43,6 +44,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const works = [
+  {
+    title: `ぷかぷか島`,
+    src: pukapuka,
+    catchcopy: '内定期間の様々な不安や疑問を、ぷかぷか解決しよう',
+    description: `ボトルメールのように気軽に質問を流せるサービスです。
+    内定先のハッカソンで作り優勝しました！
+    UI の親しみやすさと手軽さを意識しました
+    実装部分は主にフロントエンドを担当
+    `,
+    tags: '#React #ChakraUI #Rails #Firebase'
+  },
   {
     url: 'https://yowin.gg',
     title: `yowin`,
