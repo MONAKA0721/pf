@@ -243,7 +243,7 @@ const IndexPage = () => {
       </Container>
       <Container maxWidth="sm" className={classes.heroContainer}>
         <StaticImage
-          src="../images/profile.png"
+          src="../images/profile.jpg"
           alt="Profile"
           formats={["png"]}
         />
@@ -259,7 +259,7 @@ const IndexPage = () => {
             1997/7/21 生まれ。奈良県出身。
           </Typography>
           <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
-            京都大学大学院情報学研究科知能情報学専攻。
+            京都大学大学院情報学研究科知能情報学専攻卒。
           </Typography>
           <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
             Golang, Ruby, Python などでバックエンドの開発を主に行っていますが、趣味のチーム開発ではフロントを書くこともしばしばあります。
@@ -268,7 +268,7 @@ const IndexPage = () => {
             パフォーマンス・チューニングが好きで社会人になってからもその領域で活躍したいと思っています。
           </Typography>
           <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
-            趣味は旅行とスノボとスマブラ。
+            趣味は旅行とスノボとボカロとスマブラ。
           </Typography>
           <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
             NiziU の推しは RIO。
