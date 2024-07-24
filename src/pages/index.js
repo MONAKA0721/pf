@@ -1,23 +1,28 @@
 import AppBar from "@material-ui/core/AppBar";
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import { createMuiTheme, createStyles, makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import MenuIcon from '@material-ui/icons/Menu';
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Drawer from "@material-ui/core/Drawer";
+import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
+import Link from "@material-ui/core/Link";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import {
+  createMuiTheme,
+  createStyles,
+  makeStyles,
+  ThemeProvider,
+} from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import CloseIcon from "@material-ui/icons/Close";
+import MenuIcon from "@material-ui/icons/Menu";
 import "fontsource-noto-sans-jp";
 import "fontsource-noto-sans-jp/500.css";
 import { StaticImage } from "gatsby-plugin-image";
-import * as React from 'react';
+import * as React from "react";
 import { Helmet } from "react-helmet";
 import Career from "../components/career";
 import Posts from "../components/posts";
@@ -30,58 +35,45 @@ const useStyles = makeStyles((theme) =>
     },
     drawerToolbar: {
       justifyContent: "flex-end",
-      backgroundColor: '#000',
+      backgroundColor: "#000",
     },
     heroContainer: {
       paddingLeft: 0,
       paddingRight: 0,
     },
     name: {
-      fontFamily: [
-        'Noto Sans JP',
-        '"Tahoma"',
-        'serif',
-      ].join(','),
+      fontFamily: ["Noto Sans JP", '"Tahoma"', "serif"].join(","),
     },
     profile: {
       marginTop: 15,
-      fontFamily: [
-        'Noto Sans JP',
-        'serif',
-      ].join(','),
+      fontFamily: ["Noto Sans JP", "serif"].join(","),
     },
     link: {
-      fontFamily: [
-        '"Arial"',
-        'serif',
-      ].join(','),
-      '& > * + *': {
+      fontFamily: ['"Arial"', "serif"].join(","),
+      "& > * + *": {
         marginLeft: theme.spacing(4),
       },
       marginBottom: theme.spacing(3),
       fontSize: 24,
     },
     bambooooLink: {
-      fontFamily: [
-        '"Arial"',
-        'serif',
-      ].join(','),
+      fontFamily: ['"Arial"', "serif"].join(","),
       fontSize: 24,
     },
     list: {
-      width: 'auto',
-      backgroundColor: '#000',
+      width: "auto",
+      backgroundColor: "#000",
     },
     iconButton: {
-      color: '#FFF',
+      color: "#FFF",
     },
     listItem: {
-      textAlign: 'center',
-      display: 'inline-block',
+      textAlign: "center",
+      display: "inline-block",
     },
     sectionLink: {
-      textDecoration: 'none',
-      color: 'inherit',
+      textDecoration: "none",
+      color: "inherit",
     },
   })
 );
@@ -105,15 +97,12 @@ const IndexPage = () => {
       },
     },
     typography: {
-      fontFamily: [
-        '"Times"',
-        'serif',
-      ].join(','),
+      fontFamily: ['"Times"', "serif"].join(","),
     },
     overrides: {
       MuiTimelineItem: {
         missingOppositeContent: {
-          '&:before': {
+          "&:before": {
             flex: 0,
           },
         },
@@ -125,9 +114,9 @@ const IndexPage = () => {
       },
       MuiListItemText: {
         primary: {
-          fontSize: '2rem',
-        }
-      }
+          fontSize: "2rem",
+        },
+      },
     },
   });
 
@@ -136,7 +125,7 @@ const IndexPage = () => {
   const toggleDrawer = (open) => (event) => {
     setOpen(open);
   };
-  
+
   return (
     <ThemeProvider theme={theme}>
       <Helmet>
@@ -144,13 +133,16 @@ const IndexPage = () => {
         <meta charset="utf-8" />
         <title>Yuya Sumie Portfolio</title>
         <meta name="description" content="Yuya Sumie's portfolio site." />
-        
-        <meta property="og:image" content="https://mo7ka.com/ogp.png"/>
-        <meta property="og:url" content="https://mo7ka.com"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Yuya Sumie Portfolio"/>
-        <meta property="og:site_name" content="Yuya Sumie Portfolio"/>
-        <meta property="og:description" content="Yuya Sumie's portfolio site."/>
+
+        <meta property="og:image" content="https://mo7ka.com/ogp.png" />
+        <meta property="og:url" content="https://mo7ka.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Yuya Sumie Portfolio" />
+        <meta property="og:site_name" content="Yuya Sumie Portfolio" />
+        <meta
+          property="og:description"
+          content="Yuya Sumie's portfolio site."
+        />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@monaka_0721" />
@@ -168,8 +160,8 @@ const IndexPage = () => {
           </IconButton>
         </Toolbar>
       </AppBar>
-      
-      <Drawer anchor='top' open={open} onClose={toggleDrawer(false)}>
+
+      <Drawer anchor="top" open={open} onClose={toggleDrawer(false)}>
         <Toolbar className={classes.drawerToolbar}>
           <IconButton
             onClick={toggleDrawer(false)}
@@ -184,28 +176,39 @@ const IndexPage = () => {
           onKeyDown={toggleDrawer(false)}
           onClick={toggleDrawer(false)}
         >
-          
           <List>
-            {['TOP', 'ABOUT', 'LINKS', 'WORKS', 'CAREER', 'POSTS'].map((text) => (
-              <ListItem button key={text} className={classes.listItem}>
-                <a href={"#"+text} className={classes.sectionLink}>
-                  <ListItemText primary={text} />
-                </a>
-              </ListItem>
-            ))}
+            {["TOP", "ABOUT", "LINKS", "WORKS", "CAREER", "POSTS"].map(
+              (text) => (
+                <ListItem button key={text} className={classes.listItem}>
+                  <a href={"#" + text} className={classes.sectionLink}>
+                    <ListItemText primary={text} />
+                  </a>
+                </ListItem>
+              )
+            )}
           </List>
         </div>
       </Drawer>
 
       <Container maxWidth="sm" id="TOP">
         <Box id="TOP" mb={12}>
-          &ensp; 
+          &ensp;
         </Box>
         <Box mb={12}>
-          <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
+          <Typography
+            color="textPrimary"
+            variant="h3"
+            component="h1"
+            gutterBottom
+          >
             Yuya Sumie
           </Typography>
-          <Typography color="textPrimary" variant="h5" component="h1" gutterBottom>
+          <Typography
+            color="textPrimary"
+            variant="h5"
+            component="h1"
+            gutterBottom
+          >
             - Portfolio Site -
           </Typography>
         </Box>
@@ -233,10 +236,15 @@ const IndexPage = () => {
 
       <Container maxWidth="sm">
         <Box id="ABOUT" mt={14}>
-          &ensp; 
+          &ensp;
         </Box>
         <Box mt={6}>
-          <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
+          <Typography
+            color="textPrimary"
+            variant="h3"
+            component="h1"
+            gutterBottom
+          >
             ABOUT
           </Typography>
         </Box>
@@ -250,38 +258,86 @@ const IndexPage = () => {
       </Container>
       <Container maxWidth="sm">
         <Box my={5}>
-          <Typography color="textPrimary" variant="h6" component="h1" className={classes.name} gutterBottom>
-            モナカ | Yuya Sumie
+          <Typography
+            color="textPrimary"
+            variant="h6"
+            component="h1"
+            className={classes.name}
+            gutterBottom
+          >
+            住江 祐哉 | Yuya Sumie
           </Typography>
         </Box>
         <Box my={5}>
-          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
+          <Typography
+            color="textSecondary"
+            variant="body1"
+            component="h1"
+            className={classes.profile}
+            gutterBottom
+          >
             1997/7/21 生まれ。奈良県出身。
           </Typography>
-          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
+          <Typography
+            color="textSecondary"
+            variant="body1"
+            component="h1"
+            className={classes.profile}
+            gutterBottom
+          >
             京都大学大学院情報学研究科知能情報学専攻卒。
           </Typography>
-          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
-            Golang, Ruby, Python などでバックエンドの開発を主に行っていますが、趣味のチーム開発ではフロントを書くこともしばしばあります。
+          <Typography
+            color="textSecondary"
+            variant="body1"
+            component="h1"
+            className={classes.profile}
+            gutterBottom
+          >
+            バックエンド/フロントエンドエンジニア。Golang, C#, React
+            を主に使用します。パフォーマンス・チューニングが得意です。
           </Typography>
-          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
-            パフォーマンス・チューニングが好きで社会人になってからもその領域で活躍したいと思っています。
+          <Typography
+            color="textSecondary"
+            variant="body1"
+            component="h1"
+            className={classes.profile}
+            gutterBottom
+          >
+            物づくりをシンプルに行うことを信念としています。
           </Typography>
-          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
-            趣味は旅行とスノボとボカロとスマブラ。
+          <Typography
+            color="textSecondary"
+            variant="body1"
+            component="h1"
+            className={classes.profile}
+            gutterBottom
+          >
+            趣味は旅行とスノボとスマブラ。あと一生満島ひかりが好き。
           </Typography>
-          <Typography color="textSecondary" variant="body1" component="h1" className={classes.profile} gutterBottom>
-            NiziU の推しは RIO。
+          <Typography
+            color="textSecondary"
+            variant="body1"
+            component="h1"
+            className={classes.profile}
+            gutterBottom
+          >
+            NewJeans の推しはハニ。
           </Typography>
         </Box>
       </Container>
 
       <Container maxWidth="sm">
         <Box id="LINKS" mt={14}>
-          &ensp; 
+          &ensp;
         </Box>
         <Box mt={6}>
-          <Typography color="textPrimary" variant="h3" component="h1" gutterBottom>
+          <Typography
+            color="textPrimary"
+            variant="h3"
+            component="h1"
+            gutterBottom
+          >
             LINKS
           </Typography>
         </Box>
@@ -296,7 +352,13 @@ const IndexPage = () => {
               />
             </Grid>
             <Grid item>
-              <Link href="https://github.com/MONAKA0721" target="_blank" rel="noopener" color="textPrimary" underline="always">
+              <Link
+                href="https://github.com/MONAKA0721"
+                target="_blank"
+                rel="noopener"
+                color="textPrimary"
+                underline="always"
+              >
                 @MONAKA0721
               </Link>
             </Grid>
@@ -311,7 +373,13 @@ const IndexPage = () => {
               />
             </Grid>
             <Grid item>
-              <Link href="https://mobile.twitter.com/monaka_0721" target="_blank" rel="noopener" color="textPrimary" underline="always">
+              <Link
+                href="https://mobile.twitter.com/monaka_0721"
+                target="_blank"
+                rel="noopener"
+                color="textPrimary"
+                underline="always"
+              >
                 @monaka_0721
               </Link>
             </Grid>
@@ -326,7 +394,13 @@ const IndexPage = () => {
               />
             </Grid>
             <Grid item>
-              <Link href="https://www.instagram.com/yuyasumie/" target="_blank" rel="noopener" color="textPrimary" underline="always">
+              <Link
+                href="https://www.instagram.com/yuyasumie/"
+                target="_blank"
+                rel="noopener"
+                color="textPrimary"
+                underline="always"
+              >
                 @yuyasumie
               </Link>
             </Grid>
@@ -341,14 +415,25 @@ const IndexPage = () => {
               />
             </Grid>
             <Grid item>
-              <Link href="https://www.wantedly.com/id/monaka0721" target="_blank" rel="noopener" color="textPrimary" underline="always">
+              <Link
+                href="https://www.wantedly.com/id/monaka0721"
+                target="_blank"
+                rel="noopener"
+                color="textPrimary"
+                underline="always"
+              >
                 @monaka0721
               </Link>
             </Grid>
           </Grid>
         </Box>
         <Box my={10}>
-          <Grid container className={classes.bambooooLink} direction="column" alignItems="center">
+          <Grid
+            container
+            className={classes.bambooooLink}
+            direction="column"
+            alignItems="center"
+          >
             <Grid item>
               <StaticImage
                 src="../images/bamboooo.png"
@@ -358,22 +443,27 @@ const IndexPage = () => {
               />
             </Grid>
             <Grid item>
-              <Link href="https://bamboooo.net" target="_blank" rel="noopener" color="textPrimary" underline="always">
+              <Link
+                href="https://bamboooo.net"
+                target="_blank"
+                rel="noopener"
+                color="textPrimary"
+                underline="always"
+              >
                 https://bamboooo.net
               </Link>
             </Grid>
           </Grid>
         </Box>
       </Container>
-    
+
       <Works />
 
       <Career />
- 
-      <Posts />
-      
-    </ThemeProvider>
-  )
-}
 
-export default IndexPage
+      <Posts />
+    </ThemeProvider>
+  );
+};
+
+export default IndexPage;
