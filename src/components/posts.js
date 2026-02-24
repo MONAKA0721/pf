@@ -15,6 +15,19 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     backgroundColor: "#FFF",
   },
+  textThumbnail: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#FFF",
+    color: "#333",
+    fontFamily: "'Noto Sans JP', serif",
+    fontWeight: "bold",
+    fontSize: "1.2rem",
+    padding: theme.spacing(3),
+    textAlign: "center",
+    lineHeight: 1.6,
+  },
   title: {
     fontFamily: [
       'Noto Sans JP',
@@ -38,6 +51,13 @@ const useStyles = makeStyles((theme) => ({
 
 const posts = [
   {
+    url: 'https://buildersbox.corp-sansan.com/entry/2025/03/21/120000',
+    title: 'Amazon S3メタデータのサイズ制限に対するエンコーディング戦略',
+    date: '2025/03/21',
+    src: 'https://ogimage.blog.st-hatena.com/10257846132608666252/6802418398333492900/1771925952',
+    tags: '#AWS #S3 #Base64',
+  },
+  {
     url: 'https://zenn.dev/monaka0721/articles/82f7c9d3a91806',
     title: `Unity で gRPC するまで
     
@@ -57,7 +77,7 @@ const posts = [
     url: 'https://hacarus.com/ja/information/tech/20200717-cvat-dicom-ai',
     title: 'CVAT で DICOM をアノテーションできるようになるまで',
     date: '2020/07/17',
-    src: 'https://hacarus.com/wp-content/uploads/2020/07/annotation.jpg',
+    src: null,
     tags: '#CVAT #DICOM #pydicom #Django #Python',
   },
   {
@@ -92,16 +112,25 @@ const Posts = () => {
             <Grid item xs={12} sm={6} key={post.url}>
               <CardActionArea component="a" href={post.url} target="_blank">
                 <Card className={classes.card}>
-                  <CardMedia className={classes.cardMedia}>
-                    <img
-                      src={post.src}
-                      alt={post.title + "Image"}
-                      height={matches? '234' : ''}
-                      style={{
-                        verticalAlign: 'middle',
-                        maxWidth: '100%',
-                      }}
-                    />
+                  <CardMedia className={post.src ? classes.cardMedia : undefined}>
+                    {post.src ? (
+                      <img
+                        src={post.src}
+                        alt={post.title + "Image"}
+                        height={matches? '234' : ''}
+                        style={{
+                          verticalAlign: 'middle',
+                          maxWidth: '100%',
+                        }}
+                      />
+                    ) : (
+                      <div
+                        className={classes.textThumbnail}
+                        style={{ height: matches ? 234 : 180 }}
+                      >
+                        {post.title}
+                      </div>
+                    )}
                   </CardMedia>
                   <CardContent>
                     <Typography component="h3" variant="h5" gutterBottom>
