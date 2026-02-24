@@ -11,6 +11,10 @@
   <a href="https://mo7ka.com">https://mo7ka.com</a>
 </div>
 
+## hosting
+
+AWS Amplify
+
 ## requirements
 
 - Node.js 14.17.3
