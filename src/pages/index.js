@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) =>
       textDecoration: "none",
       color: "inherit",
     },
-  })
+  }),
 );
 
 const IndexPage = () => {
@@ -177,14 +177,14 @@ const IndexPage = () => {
           onClick={toggleDrawer(false)}
         >
           <List>
-            {["TOP", "ABOUT", "LINKS", "WORKS", "CAREER", "POSTS"].map(
+            {["TOP", "ABOUT", "CAREER", "LINKS", "WORKS", "POSTS"].map(
               (text) => (
                 <ListItem button key={text} className={classes.listItem}>
                   <a href={"#" + text} className={classes.sectionLink}>
                     <ListItemText primary={text} />
                   </a>
                 </ListItem>
-              )
+              ),
             )}
           </List>
         </div>
@@ -224,11 +224,13 @@ const IndexPage = () => {
         <Box my={9}>
           <Grid container justify="center">
             <Grid item>
-              <StaticImage
-                src="../images/expandMore.png"
-                alt="Expand more"
-                formats={["png"]}
-              />
+              <a href="#ABOUT">
+                <StaticImage
+                  src="../images/expandMore.png"
+                  alt="Expand more"
+                  formats={["png"]}
+                />
+              </a>
             </Grid>
           </Grid>
         </Box>
@@ -315,17 +317,10 @@ const IndexPage = () => {
           >
             趣味は旅行とスノボとスマブラ。あと一生満島ひかりが好き。
           </Typography>
-          <Typography
-            color="textSecondary"
-            variant="body1"
-            component="h1"
-            className={classes.profile}
-            gutterBottom
-          >
-            NewJeans の推しはハニ。
-          </Typography>
         </Box>
       </Container>
+
+      <Career />
 
       <Container maxWidth="sm">
         <Box id="LINKS" mt={14}>
@@ -458,8 +453,6 @@ const IndexPage = () => {
       </Container>
 
       <Works />
-
-      <Career />
 
       <Posts />
     </ThemeProvider>
