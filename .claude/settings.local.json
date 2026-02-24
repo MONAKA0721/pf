@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api:*)",
+      "WebFetch(domain:buildersbox.corp-sansan.com)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\n経歴セクションに詳細展開機能を追加し、各職歴の詳細情報を充実\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nS3メタデータ記事を追加し、画像なし記事のテキストサムネイル表示に対応\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
