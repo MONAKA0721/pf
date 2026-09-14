@@ -15,6 +15,15 @@
 
 AWS Amplify
 
+## languages
+
+- Japanese: [https://mo7ka.com/](https://mo7ka.com/)
+- English: [https://mo7ka.com/en/](https://mo7ka.com/en/)
+
+Both pages share `src/components/home.js`. Translatable strings live in
+`src/i18n/translations.js` and in the data arrays of each component as
+`{ ja: "...", en: "..." }` objects, resolved with `useT()` from `src/i18n`.
+
 ## requirements
 
 - Node.js 14.17.3
