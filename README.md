@@ -13,7 +13,26 @@
 
 ## hosting
 
-AWS Amplify
+Cloudflare Workers (static assets). The Worker `pf` serves `./public` as
+configured in `wrangler.jsonc`, on `mo7ka.com` and `www.mo7ka.com`.
+
+DNS is on Cloudflare too. The domain itself is still registered at
+Amazon Route 53.
+
+## deploy
+
+Pushing to `main` triggers Workers Builds, which builds and deploys the site.
+The build settings live in the Cloudflare dashboard (Worker `pf` → Settings →
+Builds), not in this repository:
+
+- Build command: `npm run build`
+- Deploy command: `asdf install nodejs 22.15.0 && ASDF_NODEJS_VERSION=22.15.0 npx wrangler@4 deploy`
+- Build variables: `NODE_VERSION=16.17.1`, `SHARP_IGNORE_GLOBAL_LIBVIPS=1`
+
+Gatsby 3 does not build on recent Node.js, so the build runs on Node.js 16.
+wrangler needs Node.js 18 or later, so the deploy step switches to Node.js 22.
+`SHARP_IGNORE_GLOBAL_LIBVIPS=1` makes sharp use its prebuilt binary instead of
+compiling from source, which fails on the build image.
 
 ## languages
 
@@ -26,7 +45,7 @@ Both pages share `src/components/home.js`. Translatable strings live in
 
 ## requirements
 
-- Node.js 14.17.3
+- Node.js 14.17.3 (local development, see `.tool-versions`)
 - npm 6.14.13
 
 ## commands
