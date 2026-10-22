@@ -36,8 +36,8 @@ const works = [
     Responsible for both the server side and the client side
     `,
     },
-    tags: "#Flutter #Golang #Codemagic",
-    url: "https://apps.apple.com/jp/app/memolink/id6444865734",
+    tags: "#Next.js #Golang #GraphQL #CloudflareWorkers",
+    url: "https://memolink.bamboooo.net",
   },
   {
     title: "SAPIENS",
@@ -59,7 +59,6 @@ const works = [
     `,
     },
     tags: "#Unity #C# #Codemagic",
-    url: "https://apps.apple.com/au/app/sapiens/id1592483260",
   },
   {
     title: { ja: "ぷかぷか島", en: "Pukapuka Island" },
@@ -83,7 +82,6 @@ const works = [
     tags: "#React #ChakraUI #Rails #Firebase",
   },
   {
-    url: "https://yowin.gg",
     title: "yowin",
     src: yowin,
     catchcopy: {
@@ -105,8 +103,7 @@ const works = [
     tags: "#Golang #FlexMatch #Discord #ECS",
   },
   {
-    url:
-      "https://apps.apple.com/jp/app/%E3%83%AF%E3%82%A4%E3%83%AF%E3%82%A4/id1561027910",
+    url: "https://waiwai.bamboooo.net/app/",
     title: { ja: "ワイワイ", en: "Waiwai" },
     src: waiwai,
     catchcopy: {
@@ -123,10 +120,9 @@ const works = [
     people you've just met as well as your friends.
     `,
     },
-    tags: "#Unity #C# #Golang #k8s #nchan",
+    tags: "#Golang #gRPC #nchan #JavaScript #GCE",
   },
   {
-    url: "https://www.memopic.net",
     title: "memopic",
     src: memopic,
     catchcopy: {
@@ -150,7 +146,6 @@ const works = [
     tags: "#Rails #ReactNative #LINEMessagingAPI",
   },
   {
-    url: "https://memorip.net",
     title: "Memorip",
     src: memorip,
     catchcopy: {
@@ -214,8 +209,11 @@ const works = [
 </div>
 <div class="container md">
   <div class="card-grid">
-    {works.map((work) => (
-      <a class="card" href={work.url} target="_blank">
+    {works.map((work) => {
+      // Works whose site is gone are shown without a link.
+      const Card = work.url ? "a" : "div";
+      return (
+      <Card class="card" href={work.url} target={work.url && "_blank"}>
         <div class="card-media">
           <Image
             src={work.src}
@@ -231,8 +229,9 @@ const works = [
           <p class="body1 gutter-bottom description">{t(work.description)}</p>
           <p class="subtitle1 tags">{work.tags}</p>
         </div>
-      </a>
-    ))}
+      </Card>
+      );
+    })}
   </div>
 </div>
 
