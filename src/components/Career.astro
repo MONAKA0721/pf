@@ -1,61 +1,9 @@
-import Box from "@material-ui/core/Box";
-import Collapse from "@material-ui/core/Collapse";
-import Container from "@material-ui/core/Container";
-import IconButton from "@material-ui/core/IconButton";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Timeline from "@material-ui/lab/Timeline";
-import TimelineConnector from "@material-ui/lab/TimelineConnector";
-import TimelineContent from "@material-ui/lab/TimelineContent";
-import TimelineDot from "@material-ui/lab/TimelineDot";
-import TimelineItem from "@material-ui/lab/TimelineItem";
-import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
-import React, { useState } from "react";
-import { useT } from "../i18n";
+---
+import { localize } from "../i18n";
 import { ui } from "../i18n/translations";
 
-const useStyles = makeStyles((theme) => ({
-  date: {
-    fontFamily: ["Noto Sans JP", "serif"].join(","),
-  },
-  company: {
-    fontFamily: ["Noto Sans JP", "serif"].join(","),
-  },
-  description: {
-    fontFamily: ["Noto Sans JP", "serif"].join(","),
-    whiteSpace: "pre-line",
-  },
-  expandRow: {
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
-    marginTop: theme.spacing(0.5),
-  },
-  expandIcon: {
-    padding: 4,
-    color: "#ffffff",
-    transition: "transform 0.3s",
-  },
-  expandIconOpen: {
-    padding: 4,
-    color: "#ffffff",
-    transition: "transform 0.3s",
-    transform: "rotate(180deg)",
-  },
-  expandLabel: {
-    fontFamily: ["Noto Sans JP", "serif"].join(","),
-    fontSize: "0.8rem",
-    color: "#ffffff",
-  },
-  detail: {
-    fontFamily: ["Noto Sans JP", "serif"].join(","),
-    whiteSpace: "pre-line",
-    marginTop: theme.spacing(1),
-    paddingLeft: theme.spacing(1),
-    borderLeft: `2px solid ${theme.palette.divider}`,
-  },
-}));
+const { locale } = Astro.props;
+const t = (value) => localize(value, locale);
 
 const careers = [
   {
@@ -233,109 +181,173 @@ Sansan is a SaaS that has been running for over 19 years, and its core data, bus
   },
 ];
 
-const Career = () => {
-  const classes = useStyles();
-  const t = useT();
-  const [expandedIndex, setExpandedIndex] = useState(null);
+---
 
-  const handleToggle = (index) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
+<div class="container sm">
+  <div id="CAREER" class="section-anchor"></div>
+  <h2 class="h3 section-title">CAREER</h2>
+  <ul class="timeline">
+    {careers.map((career, index) => (
+      <li class="timeline-item">
+        <div class="timeline-separator">
+          <span class="timeline-dot"></span>
+          <span class="timeline-connector"></span>
+        </div>
+        <div class="timeline-content">
+          <p class="body1 gutter-bottom text-secondary date">{career.date}</p>
+          <h3 class="h6 company">{t(career.company)}</h3>
+          <p class="body2 gutter-bottom description">{t(career.description)}</p>
+          {t(career.detail) && (
+            <>
+              <button
+                type="button"
+                class="expand-row"
+                aria-expanded="false"
+                aria-controls={`career-detail-${index}`}
+              >
+                <span class="expand-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path></svg>
+                </span>
+                <span class="expand-label">
+                  <span class="label-closed">{t(ui.careerDetail)}</span>
+                  <span class="label-open">{t(ui.careerClose)}</span>
+                </span>
+              </button>
+              <div class="collapse" id={`career-detail-${index}`}>
+                <div class="collapse-inner">
+                  <div class="body2 detail">{t(career.detail)}</div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
 
-  return (
-    <Container maxWidth="sm">
-      <Box id="CAREER" mt={14}>
-        &ensp;
-      </Box>
-      <Box mt={6}>
-        <Typography
-          color="textPrimary"
-          variant="h3"
-          component="h1"
-          gutterBottom
-        >
-          CAREER
-        </Typography>
-      </Box>
-      <Timeline>
-        {careers.map((career, index) => (
-          <TimelineItem key={career.date + t(career.company)}>
-            <TimelineSeparator>
-              <TimelineDot color="secondary" />
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Box mb={5}>
-                <Typography
-                  color="textSecondary"
-                  variant="body1"
-                  component="h1"
-                  gutterBottom
-                >
-                  <Box className={classes.date}>{career.date}</Box>
-                </Typography>
-                <Typography
-                  color="textPrimary"
-                  variant="h6"
-                  component="h1"
-                  gutterBottom
-                >
-                  <Box fontWeight="fontWeightBold" className={classes.company}>
-                    {t(career.company)}
-                  </Box>
-                </Typography>
-                <Typography
-                  color="textPrimary"
-                  variant="body2"
-                  component="h1"
-                  gutterBottom
-                  className={classes.description}
-                >
-                  <Box className={classes.description}>
-                    {t(career.description)}
-                  </Box>
-                </Typography>
-                {t(career.detail) && (
-                  <>
-                    <Box
-                      className={classes.expandRow}
-                      onClick={() => handleToggle(index)}
-                    >
-                      <IconButton
-                        size="small"
-                        className={
-                          expandedIndex === index
-                            ? classes.expandIconOpen
-                            : classes.expandIcon
-                        }
-                      >
-                        <ExpandMoreIcon fontSize="small" />
-                      </IconButton>
-                      <Typography className={classes.expandLabel}>
-                        {expandedIndex === index
-                          ? t(ui.careerClose)
-                          : t(ui.careerDetail)}
-                      </Typography>
-                    </Box>
-                    <Collapse in={expandedIndex === index}>
-                      <Typography
-                        color="textPrimary"
-                        variant="body2"
-                        component="div"
-                        className={classes.detail}
-                      >
-                        {t(career.detail)}
-                      </Typography>
-                    </Collapse>
-                  </>
-                )}
-              </Box>
-            </TimelineContent>
-          </TimelineItem>
-        ))}
-      </Timeline>
-    </Container>
-  );
-};
+<script>
+  // Only one career detail is expanded at a time.
+  const buttons = document.querySelectorAll(".expand-row");
+  for (const button of buttons) {
+    button.addEventListener("click", () => {
+      const open = button.getAttribute("aria-expanded") !== "true";
+      for (const other of buttons) other.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-expanded", String(open));
+    });
+  }
+</script>
 
-export default Career;
+<style>
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 16px;
+  }
+  .timeline-item {
+    display: flex;
+    position: relative;
+    min-height: 70px;
+    list-style: none;
+  }
+  .timeline-item::before {
+    content: "";
+    flex: 0;
+    padding: 6px 16px;
+  }
+  .timeline-separator {
+    display: flex;
+    flex: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+  .timeline-dot {
+    display: flex;
+    align-self: baseline;
+    margin: 11.5px 0;
+    padding: 4px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background-color: #a38f48;
+    box-shadow:
+      0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+  .timeline-connector {
+    width: 2px;
+    flex-grow: 1;
+    background-color: #bdbdbd;
+  }
+  .timeline-content {
+    flex: 1;
+    padding: 6px 16px 46px;
+  }
+  .date,
+  .company,
+  .description,
+  .detail,
+  .expand-label {
+    font-family: "Noto Sans JP", serif;
+  }
+  .company {
+    font-weight: 700;
+  }
+  .description,
+  .detail {
+    white-space: pre-line;
+  }
+  .expand-row {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  .expand-icon {
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+  .expand-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+  }
+  [aria-expanded="true"] .expand-icon {
+    transform: rotate(180deg);
+  }
+  .expand-label {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+  }
+  [aria-expanded="true"] .label-closed,
+  [aria-expanded="false"] .label-open {
+    display: none;
+  }
+  .collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows 300ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 300ms;
+  }
+  [aria-expanded="true"] + .collapse {
+    grid-template-rows: 1fr;
+    visibility: visible;
+  }
+  .collapse-inner {
+    overflow: hidden;
+  }
+  .detail {
+    margin-top: 8px;
+    padding-left: 8px;
+    border-left: 2px solid rgba(0, 0, 0, 0.12);
+  }
+</style>

@@ -2,7 +2,9 @@
   "name": "pf",
   "compatibility_date": "2026-10-01",
   "assets": {
-    "directory": "./public",
+    "directory": "./dist",
     "not_found_handling": "404-page"
-  }
+  },
+  // Lets Workers Builds run `wrangler preview` for non-main branches.
+  "previews": {}
 }

@@ -1,0 +1,26 @@
+---
+import Home from "../components/Home.astro";
+---
+
+<Home locale="ja" />
+
+<script>
+  import { localePath } from "../i18n";
+  import { consumeRedirected, getStoredLocale, markRedirected } from "../i18n/storage";
+
+  // On the first visit, send visitors whose browser is not set to Japanese to
+  // the English page. A locale chosen manually via the header link is stored
+  // and always wins over the browser setting. The redirect happens at most
+  // once per session so it can never loop.
+  if (!consumeRedirected()) {
+    const stored = getStoredLocale();
+    const language = navigator.language || "";
+    if (
+      stored === "en" ||
+      (stored !== "ja" && language && !language.toLowerCase().startsWith("ja"))
+    ) {
+      markRedirected();
+      window.location.replace(localePath("en"));
+    }
+  }
+</script>
