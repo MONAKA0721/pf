@@ -1,0 +1,132 @@
+---
+import { localize } from "../i18n";
+
+const { locale } = Astro.props;
+const t = (value) => localize(value, locale);
+
+const posts = [
+  {
+    url: 'https://buildersbox.corp-sansan.com/entry/2025/03/21/120000',
+    title: {
+      ja: 'Amazon S3メタデータのサイズ制限に対するエンコーディング戦略',
+      en: 'Encoding strategies for the Amazon S3 metadata size limit',
+    },
+    date: '2025/03/21',
+    src: 'https://ogimage.blog.st-hatena.com/10257846132608666252/6802418398333492900/1771925952',
+    tags: '#AWS #S3 #Base64',
+  },
+  {
+    url: 'https://zenn.dev/monaka0721/articles/82f7c9d3a91806',
+    title: {
+      ja: `Unity で gRPC するまで
+    
+    `,
+      en: `Getting gRPC working in Unity
+    
+    `,
+    },
+    date: '2021/01/26',
+    src: 'https://res.cloudinary.com/zenn/image/upload/s--vnJcz_Tp--/co_rgb:222%2Cg_south_west%2Cl_text:notosansjp-medium.otf_37_bold:MONAKA%2Cx_203%2Cy_98/c_fit%2Cco_rgb:222%2Cg_north_west%2Cl_text:notosansjp-medium.otf_80_bold:Unity%2520%25E3%2581%25A7%2520gRPC%2520%25E3%2581%2599%25E3%2582%258B%25E3%2581%25BE%25E3%2581%25A7%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2o1a1NlN2stR1Y0WVVpWi1qRFlWSnlrQXJEMklVUXFSV1owcl9rVjhnPXM4MC1j%2Cr_max%2Cw_90%2Cx_87%2Cy_72/v1627274783/default/og-base_z4sxah.png',
+    tags: '#Unity #gRPC #C#'
+  },
+  {
+    url: 'https://qiita.com/MONAKA0721/items/303b76fa8624cb00179b',
+    title: {
+      ja: 'Action Cable を解説しながらプログレスバーを実装する',
+      en: 'Implementing a progress bar while explaining Action Cable',
+    },
+    date: '2020/08/20',
+    src: 'https://staging-qiita-user-contents.imgix.net/https%3A%2F%2Fcdn.qiita.com%2Fassets%2Fpublic%2Farticle-ogp-background-1150d8b18a7c15795b701a55ae908f94.png?ixlib=rb-4.0.0&w=1200&mark=https%3A%2F%2Fstaging-qiita-user-contents.imgix.net%2F~text%3Fixlib%3Drb-4.0.0%26w%3D840%26h%3D380%26txt%3D%25E3%2580%2590Rails%25206.0%25E3%2580%2591Action%2520Cable%2520%25E3%2582%2592%25E8%25A7%25A3%25E8%25AA%25AC%25E3%2581%2597%25E3%2581%25AA%25E3%2581%258C%25E3%2582%2589%25E3%2583%2597%25E3%2583%25AD%25E3%2582%25B0%25E3%2583%25AC%25E3%2582%25B9%25E3%2583%2590%25E3%2583%25BC%25E3%2582%2592%25E5%25AE%259F%25E8%25A3%2585%25E3%2581%2599%25E3%2582%258B%26txt-color%3D%2523333%26txt-font%3DHiragino%2520Sans%2520W6%26txt-size%3D54%26txt-clip%3Dellipsis%26txt-align%3Dcenter%252Cmiddle%26s%3D5060e59bea8566e6bafa1df437e4a61b&mark-align=center%2Cmiddle&blend=https%3A%2F%2Fstaging-qiita-user-contents.imgix.net%2F~text%3Fixlib%3Drb-4.0.0%26w%3D840%26h%3D500%26txt%3D%2540MONAKA0721%26txt-color%3D%2523333%26txt-font%3DHiragino%2520Sans%2520W6%26txt-size%3D45%26txt-align%3Dright%252Cbottom%26s%3Def13c70bfbb211737315a090784fcecb&blend-align=center%2Cmiddle&blend-mode=normal&s=753335a6ca74986aa1d30c6091baa730',
+    tags: '#ActionCable #Rails #WebSocket'
+  },
+  {
+    url: 'https://hacarus.com/ja/information/tech/20200717-cvat-dicom-ai',
+    title: {
+      ja: 'CVAT で DICOM をアノテーションできるようになるまで',
+      en: 'Getting CVAT to annotate DICOM images',
+    },
+    date: '2020/07/17',
+    src: null,
+    tags: '#CVAT #DICOM #pydicom #Django #Python',
+  },
+  {
+    url: 'https://www.slideshare.net/YuyaSumie/ss-142300342/1',
+    title: {
+      ja: '複合現実感のためのコンピュータビジョン技術',
+      en: 'Computer vision techniques for mixed reality',
+    },
+    date: '2019/04/26',
+    src: 'https://cdn.slidesharecdn.com/ss_thumbnails/computervisionforar-190426072017-thumbnail-4.jpg?cb=1607356697',
+    tags: { ja: '#AR #カメラ幾何 #SLAM', en: '#AR #CameraGeometry #SLAM' }
+  },
+];
+
+---
+
+<div class="container sm">
+  <div id="POSTS" class="section-anchor"></div>
+  <h2 class="h3 section-title">POSTS</h2>
+</div>
+<div class="container md">
+  <div class="card-grid">
+    {posts.map((post) => (
+      <a class="card" href={post.url} target="_blank">
+        <div class:list={["card-media", { "with-image": post.src }]}>
+          {post.src ? (
+            <img src={post.src} alt={t(post.title) + " image"} loading="lazy" />
+          ) : (
+            <div class="text-thumbnail">{t(post.title)}</div>
+          )}
+        </div>
+        <div class="card-content">
+          <h3 class="h5 gutter-bottom title">{t(post.title)}</h3>
+          <p class="subtitle1 gutter-bottom tags">{t(post.tags)}</p>
+          <p class="subtitle1 text-secondary date">{post.date}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .card-media.with-image {
+    text-align: center;
+    background-color: #fff;
+  }
+  @media (min-width: 600px) {
+    .card-media img {
+      height: 234px;
+    }
+  }
+  .text-thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+    padding: 24px;
+    background-color: #fff;
+    color: #333;
+    font-family: "Noto Sans JP", serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+  @media (min-width: 600px) {
+    .text-thumbnail {
+      height: 234px;
+    }
+  }
+  .title {
+    margin-bottom: 48px;
+    font-family: "Noto Sans JP", serif;
+    font-weight: 700;
+    white-space: pre-line;
+  }
+  .tags {
+    font-family: "Arial", "Noto Serif";
+  }
+  .date {
+    font-family: "Arial", serif;
+  }
+</style>

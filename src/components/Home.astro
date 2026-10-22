@@ -1,0 +1,463 @@
+---
+import "@fontsource/noto-sans-jp/400.css";
+import "@fontsource/noto-sans-jp/500.css";
+import "@fontsource/noto-sans-jp/700.css";
+import { Image } from "astro:assets";
+import { localePath, localize, LOCALES } from "../i18n";
+import { ui } from "../i18n/translations";
+import bamboooo from "../images/bamboooo.png";
+import expandMore from "../images/expandMore.png";
+import github from "../images/github.png";
+import hero from "../images/hero.png";
+import instagram from "../images/instagram.png";
+import profile from "../images/profile.jpg";
+import twitter from "../images/twitter.png";
+import wantedly from "../images/wantedly.png";
+import Career from "./Career.astro";
+import Posts from "./Posts.astro";
+import Works from "./Works.astro";
+
+const SITE_URL = "https://mo7ka.com";
+
+const { locale } = Astro.props;
+const t = (value) => localize(value, locale);
+const otherLocale = LOCALES.find((l) => l !== locale);
+
+const links = [
+  { image: github, alt: "GitHub logo", href: "https://github.com/MONAKA0721", label: "@MONAKA0721" },
+  { image: twitter, alt: "Twitter logo", href: "https://mobile.twitter.com/monaka_0721", label: "@monaka_0721" },
+  { image: instagram, alt: "Instagram logo", href: "https://www.instagram.com/yuyasumie/", label: "@yuyasumie" },
+  { image: wantedly, alt: "Wantedly logo", href: "https://www.wantedly.com/id/monaka0721", label: "@monaka0721" },
+];
+---
+
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{ui.siteTitle}</title>
+    <meta name="description" content={ui.siteDescription} />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
+    <link rel="canonical" href={SITE_URL + localePath(locale)} />
+    {LOCALES.map((l) => <link rel="alternate" hreflang={l} href={SITE_URL + localePath(l)} />)}
+    <link rel="alternate" hreflang="x-default" href={SITE_URL + "/"} />
+
+    <meta property="og:image" content={SITE_URL + "/ogp.png"} />
+    <meta property="og:url" content={SITE_URL + localePath(locale)} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={ui.siteTitle} />
+    <meta property="og:site_name" content={ui.siteTitle} />
+    <meta property="og:description" content={ui.siteDescription} />
+    <meta property="og:locale" content={locale === "ja" ? "ja_JP" : "en_US"} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@monaka_0721" />
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="toolbar">
+        <a
+          href={localePath(otherLocale)}
+          class="language-link"
+          aria-label={t(ui.switchLanguageAria)}
+          hreflang={otherLocale}
+          data-locale={otherLocale}
+        >
+          {t(ui.languageLabel)}
+        </a>
+        <button type="button" class="icon-button menu-button" aria-label="menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <dialog class="drawer">
+      <div class="toolbar drawer-toolbar">
+        <button type="button" class="icon-button" aria-label="close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </div>
+      <nav>
+        <ul>
+          {ui.nav.map((text) => (
+            <li>
+              <a href={"#" + text}>{text}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </dialog>
+
+    <div class="container sm">
+      <div id="TOP" class="spacer"></div>
+      <div class="intro">
+        <h1 class="h3">Yuya Sumie</h1>
+        <p class="h5">{ui.subtitle}</p>
+      </div>
+    </div>
+    <div class="container sm flush">
+      <Image src={hero} alt="Snow landscape" width={600} widths={[600, 1200]} sizes="(min-width: 600px) 600px, 100vw" />
+    </div>
+    <div class="scroll-hint">
+      <a href="#ABOUT">
+        <Image src={expandMore} alt="Expand more" format="png" />
+      </a>
+    </div>
+
+    <div class="container sm">
+      <div id="ABOUT" class="section-anchor"></div>
+      <h2 class="h3 section-title">ABOUT</h2>
+    </div>
+    <div class="container sm flush">
+      <Image src={profile} alt="Profile" width={600} widths={[600, 1200]} sizes="(min-width: 600px) 600px, 100vw" />
+    </div>
+    <div class="container sm">
+      <p class="h6 name">{t(ui.name)}</p>
+      <div class="about">
+        {ui.about.map((paragraph) => <p class="body1 profile">{t(paragraph)}</p>)}
+      </div>
+    </div>
+
+    <Career locale={locale} />
+
+    <div class="container sm">
+      <div id="LINKS" class="section-anchor"></div>
+      <h2 class="h3 section-title">LINKS</h2>
+      <div class="links">
+        {links.map((link) => (
+          <div class="link">
+            <Image src={link.image} alt={link.alt} width={70} densities={[1, 2]} format="png" />
+            <a href={link.href} target="_blank" rel="noopener">{link.label}</a>
+          </div>
+        ))}
+      </div>
+      <div class="bamboooo">
+        <Image src={bamboooo} alt="bamboooo logo" width={100} densities={[1, 2]} format="png" />
+        <a href="https://bamboooo.net" target="_blank" rel="noopener">https://bamboooo.net</a>
+      </div>
+    </div>
+
+    <Works locale={locale} />
+
+    <Posts locale={locale} />
+  </body>
+</html>
+
+<script>
+  import { storeLocale } from "../i18n/storage";
+
+  document.querySelector(".language-link").addEventListener("click", (event) => {
+    storeLocale(event.currentTarget.dataset.locale);
+  });
+
+  const drawer = document.querySelector(".drawer");
+  document.querySelector(".menu-button").addEventListener("click", () => drawer.showModal());
+  // Any click inside the drawer (a section link, the close button or the
+  // backdrop) closes it, as does Escape.
+  drawer.addEventListener("click", () => drawer.close());
+</script>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    margin: 0;
+    background-color: #212121;
+    color: #fff;
+    font-family: "Times", serif;
+    font-size: 0.875rem;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    margin: 0;
+  }
+  .container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  .container.flush {
+    padding-inline: 0;
+  }
+  @media (min-width: 600px) {
+    .container {
+      padding-inline: 24px;
+    }
+    .container.sm {
+      max-width: 600px;
+    }
+  }
+  @media (min-width: 960px) {
+    .container.md {
+      max-width: 960px;
+    }
+  }
+  .section-anchor {
+    margin-top: 112px;
+    height: 1.43em;
+  }
+  .section-title {
+    margin-top: 48px;
+  }
+  .h3 {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.167;
+    margin-bottom: 0.35em;
+  }
+  .h5 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.334;
+    margin-bottom: 0.35em;
+  }
+  .h6 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
+    margin-bottom: 0.35em;
+  }
+  .body1 {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+  }
+  .body2 {
+    font-size: 0.875rem;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+  }
+  .subtitle1 {
+    font-size: 1rem;
+    line-height: 1.75;
+    letter-spacing: 0.00938em;
+  }
+  .gutter-bottom {
+    margin-bottom: 0.35em;
+  }
+  .text-secondary {
+    color: #a9a9a9;
+  }
+  .card-grid {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 600px) {
+    .card-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+  .card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: #3e3e3e;
+    color: #fff;
+    text-decoration: none;
+    box-shadow:
+      0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: currentColor;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card:hover::after {
+    opacity: 0.04;
+  }
+  .card-content {
+    padding: 16px 16px 24px;
+  }
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .icon-button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  .icon-button svg {
+    width: 1em;
+    height: 1em;
+    font-size: 1.5rem;
+    fill: currentColor;
+  }
+</style>
+
+<style>
+  .app-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    background-color: #191919;
+    box-shadow:
+      0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 56px;
+    padding-inline: 16px;
+  }
+  @media (orientation: landscape) {
+    .toolbar {
+      min-height: 48px;
+    }
+  }
+  @media (min-width: 600px) {
+    .toolbar {
+      min-height: 64px;
+      padding-inline: 24px;
+    }
+  }
+  .language-link {
+    font-family: "Noto Sans JP", serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-right: 16px;
+  }
+  .language-link:hover {
+    text-decoration: underline;
+  }
+  .menu-button {
+    margin-left: -12px;
+  }
+  .drawer {
+    position: fixed;
+    inset: 0 0 auto 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: #000;
+    color: #fff;
+    overflow-y: auto;
+    box-shadow:
+      0px 8px 10px -5px rgba(0, 0, 0, 0.2),
+      0px 16px 24px 2px rgba(0, 0, 0, 0.14),
+      0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+    transition:
+      transform 225ms cubic-bezier(0, 0, 0.2, 1),
+      overlay 225ms allow-discrete,
+      display 225ms allow-discrete;
+  }
+  .drawer:not([open]) {
+    transform: translateY(-100%);
+  }
+  @starting-style {
+    .drawer[open] {
+      transform: translateY(-100%);
+    }
+  }
+  .drawer::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .drawer ul {
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+  }
+  .drawer li a {
+    display: block;
+    padding: 8px 16px;
+    margin-block: 4px;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    font-size: 2rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+  }
+  .drawer li a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  .spacer {
+    margin-bottom: 96px;
+    height: 1.43em;
+  }
+  .intro {
+    margin-bottom: 96px;
+  }
+  .scroll-hint {
+    display: flex;
+    justify-content: center;
+    margin-block: 72px;
+  }
+  .name {
+    margin-block: 40px;
+    font-family: "Noto Sans JP", "Tahoma", serif;
+  }
+  .about {
+    margin-block: 40px;
+  }
+  .profile {
+    margin-top: 15px;
+    margin-bottom: 0.35em;
+    font-family: "Noto Sans JP", serif;
+    color: #a9a9a9;
+  }
+  .links {
+    margin-top: 40px;
+  }
+  .link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 24px;
+    font-family: "Arial", serif;
+    font-size: 24px;
+  }
+  .link a,
+  .bamboooo a {
+    color: #fff;
+  }
+  .bamboooo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: 80px;
+    font-family: "Arial", serif;
+    font-size: 24px;
+  }
+</style>

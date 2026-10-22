@@ -1,15 +1,6 @@
-import Box from "@material-ui/core/Box";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import React from "react";
-import { useT } from "../i18n";
+---
+import { Image } from "astro:assets";
+import { localize } from "../i18n";
 import haze from "../images/haze.png";
 import memolink from "../images/memolink.png";
 import memopic from "../images/memopic.png";
@@ -20,22 +11,8 @@ import sapiens from "../images/sapiens.png";
 import waiwai from "../images/waiwai.png";
 import yowin from "../images/yowin.png";
 
-const useStyles = makeStyles((theme) => ({
-  cardMedia: {
-    textAlign: "center",
-  },
-  title: {
-    fontFamily: ["Noto Sans JP", "serif"].join(","),
-    whiteSpace: "pre-line",
-  },
-  tags: {
-    fontFamily: ['"Arial"', "Noto Serif"].join(","),
-  },
-  description: {
-    fontFamily: ["Noto Sans JP", "serif"].join(","),
-    whiteSpace: "pre-line",
-  },
-}));
+const { locale } = Astro.props;
+const t = (value) => localize(value, locale);
 
 const works = [
   {
@@ -213,7 +190,7 @@ const works = [
     tags: "#Blender #Python #SceneNetRGB-D",
   },
   {
-    url: "https://main.dg6tzh1klqjl4.amplifyapp.com",
+    url: "https://mo7ka.com",
     title: "PF",
     src: pf,
     catchcopy: { ja: "ポートフォリオサイト", en: "Portfolio site" },
@@ -225,88 +202,67 @@ const works = [
     A redesign of my previous portfolio
     `,
     },
-    tags: "#Gatsby #Material-UI #Amplify",
+    tags: "#Astro #CloudflareWorkers",
   },
 ];
 
-const Works = () => {
-  const classes = useStyles();
-  const t = useT();
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+---
 
-  return (
-    <>
-      <Container maxWidth="sm">
-        <Box id="WORKS" mt={14}>
-          &ensp;
-        </Box>
-        <Box mt={6}>
-          <Typography
-            color="textPrimary"
-            variant="h3"
-            component="h1"
-            gutterBottom
-          >
-            WORKS
-          </Typography>
-        </Box>
-      </Container>
-      <Container maxWidth="md">
-        <Grid container spacing={3}>
-          {works.map((work) => (
-            <Grid item xs={12} sm={6} key={work.src}>
-              <CardActionArea component="a" href={work.url} target="_blank">
-                <Card className={classes.card}>
-                  <CardMedia className={classes.cardMedia}>
-                    <img
-                      src={work.src}
-                      alt={t(work.title) + " image"}
-                      height={matches ? "285" : ""}
-                      style={{
-                        verticalAlign: "middle",
-                        maxWidth: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </CardMedia>
-                  <CardContent>
-                    <Typography component="h3" variant="h5" gutterBottom>
-                      <Box
-                        fontWeight="fontWeightBold"
-                        className={classes.title}
-                      >
-                        {t(work.title)}
-                      </Box>
-                    </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      color="textSecondary"
-                      gutterBottom
-                    >
-                      <Box className={classes.title}>{t(work.catchcopy)}</Box>
-                    </Typography>
-                    <Typography component="span" variant="body1" gutterBottom>
-                      <Box
-                        className={classes.description}
-                        lineHeight={1.7}
-                        my={2}
-                      >
-                        {t(work.description)}
-                      </Box>
-                    </Typography>
-                    <Typography variant="subtitle1">
-                      <Box className={classes.tags}>{work.tags}</Box>
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </CardActionArea>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </>
-  );
-};
+<div class="container sm">
+  <div id="WORKS" class="section-anchor"></div>
+  <h2 class="h3 section-title">WORKS</h2>
+</div>
+<div class="container md">
+  <div class="card-grid">
+    {works.map((work) => (
+      <a class="card" href={work.url} target="_blank">
+        <div class="card-media">
+          <Image
+            src={work.src}
+            alt={t(work.title) + " image"}
+            width={456}
+            widths={[456, 912]}
+            sizes="(min-width: 960px) 456px, (min-width: 600px) 50vw, 100vw"
+          />
+        </div>
+        <div class="card-content">
+          <h3 class="h5 gutter-bottom title">{t(work.title)}</h3>
+          <p class="subtitle1 gutter-bottom text-secondary title">{t(work.catchcopy)}</p>
+          <p class="body1 gutter-bottom description">{t(work.description)}</p>
+          <p class="subtitle1 tags">{work.tags}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>
 
-export default Works;
+<style>
+  .card-media {
+    text-align: center;
+  }
+  .card-media img {
+    object-fit: cover;
+  }
+  @media (min-width: 600px) {
+    .card-media img {
+      width: auto;
+      height: 285px;
+    }
+  }
+  .title {
+    font-family: "Noto Sans JP", serif;
+    white-space: pre-line;
+  }
+  h3.title {
+    font-weight: 700;
+  }
+  .description {
+    margin-block: 16px;
+    font-family: "Noto Sans JP", serif;
+    white-space: pre-line;
+    line-height: 1.7;
+  }
+  .tags {
+    font-family: "Arial", "Noto Serif";
+  }
+</style>

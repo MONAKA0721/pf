@@ -4,31 +4,15 @@
   "private": true,
   "description": "PF",
   "author": "Yuya Sumie",
-  "keywords": [
-    "gatsby"
-  ],
+  "type": "module",
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
-    "fontsource-noto-sans-jp": "^4.0.0",
-    "gatsby": "^3.2.1",
-    "gatsby-plugin-image": "^1.2.1",
-    "gatsby-plugin-manifest": "^3.3.0",
-    "gatsby-plugin-material-ui": "^3.0.1",
-    "gatsby-plugin-react-helmet": "^4.3.0",
-    "gatsby-plugin-sharp": "^3.2.1",
-    "gatsby-source-filesystem": "^3.2.0",
-    "gatsby-transformer-sharp": "^3.2.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "@fontsource/noto-sans-jp": "^5.3.1",
+    "astro": "^7.4.2"
   }
 }
