@@ -45,6 +45,11 @@ grouped PRs for security fixes (`.github/dependabot.yml`). The Build workflow
 builds every PR and fails on high or critical vulnerabilities in production
 dependencies.
 
+`main` requires the Build check to pass before merging. Dependabot PRs that
+are not major updates are merged automatically once it passes
+(`.github/workflows/dependabot-automerge.yml`); major updates need a manual
+review.
+
 ## commands
 
 Requires Node.js 24 (see `.tool-versions`).
